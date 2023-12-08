@@ -1,9 +1,10 @@
 import React, { useContext, useState } from 'react'
-import { AuthContexts } from '../../Shared/Contexts/Auth/AuthContexts';
+import '../../Styles/Login/LoginStyles.css'
+import { AuthContext } from '../../Shared/Contexts/Auth/AuthContexts';
 import { useNavigate } from 'react-router-dom';
 
 const LoginScreen = () => {
-    const auth = useContext(AuthContexts)
+    const auth = useContext(AuthContext)
     const navigate = useNavigate();
 
     //! 
@@ -23,7 +24,7 @@ const LoginScreen = () => {
     }
 
   return (
-    <div>
+    <div className='container-principal-login'>
         <h2>Pagina Fechada</h2>
 
         <input 

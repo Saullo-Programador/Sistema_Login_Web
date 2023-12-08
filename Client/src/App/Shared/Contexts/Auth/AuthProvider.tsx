@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AuthContexts } from "./AuthContexts";
+import { AuthContext } from "./AuthContexts";
 import { User } from "../../Types/User";
 import { useApi } from "../../Hooks/useApi";
 
@@ -23,8 +23,8 @@ export const AuthProvider = ({ children }: { children: JSX.Element}) => {
     }
 
     return(
-        <AuthContexts.Provider value={{ user , signin , signout }}>
+        <AuthContext.Provider value={{ user , signin , signout }}>
             {children}
-        </AuthContexts.Provider>
+        </AuthContext.Provider>
     );
 }
