@@ -1,11 +1,12 @@
-.App{
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-}
-
-.nav-bar{
-    display: flex;
-    gap: 15px;
-}
+.App {
+    text-align: center;
+  }
+  
+  nav a {
+    color: #000;
+    display: inline-block;
+    margin: 0 10px;
+  }
+  nav a:hover {
+    text-decoration: none;
+  }
