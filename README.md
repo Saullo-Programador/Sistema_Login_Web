@@ -1,9 +1,13 @@
 <h1 text-align="center">Sistema de Login</h1>
-Sistema desenvolvido com Mui,React e TypeScript usando ContextAPI, Router e Token
+Sistema desenvolvido com StyledComponents React e TypeScript usando ContextAPI, Router, Token e LocalStorage
 
 ## Linguagens, frameworks e bibliotécas utilizadas.
   
-  <img height="60" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
+<p >
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=ts,react,styledcomponents" />
+  </a>
+</p>
           
 ## Comandos necessarios para executar o projeto  
 ```
