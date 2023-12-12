@@ -1,17 +1,12 @@
-import './App.css';
 import RouterPages from './Routes/Router';
-
+import GlobalStyle from './Styles/Global/GlobalStyles';
 
 function App() {
   return (
-    <body className='App'>
-      <header>
-        paginas
-      </header>
-      <main>
-        <RouterPages/>
-      </main>
-    </body>
+    <>
+      <GlobalStyle/>
+      <RouterPages/>
+    </>
   );
 }
 

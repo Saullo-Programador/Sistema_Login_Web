@@ -2,20 +2,23 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import UseApi from "../../Shared/Hooks/UseApi";
 import { AuthContext } from "../../Shared/Contexts/Auth/AuthContext";
+import * as H from '../../Styles/Global/SignupSigninStyles'
+import ButtonComponente from "../../Components/Container/ButtonComponente";
 
 const HomeScreens = () => {
     const auth = useContext(AuthContext)
     const { signout } = UseApi();
     const navigate = useNavigate();
+    
 
     return (
-        <div>
-            <h2>Home</h2>
-            <p>Olá {auth?.user?.name}, seja bem vindo! </p>
-            <button onClick={() => [signout(), navigate("/")]}>
-                Sair
-            </button>
-        </div>
+        <H.Container>
+            <H.ContentHome>
+                <H.Title>Home</H.Title>
+                <H.Label>Olá {auth?.user?.name}, seja bem vindo! </H.Label>
+                <ButtonComponente titulo={"Sair"} onClick={() => {signout(); navigate("/");}}></ButtonComponente>
+            </H.ContentHome>
+        </H.Container>
     );
 }
 

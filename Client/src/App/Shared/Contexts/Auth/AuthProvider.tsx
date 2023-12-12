@@ -43,7 +43,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const signup = (email: string, password: string): void | string => {
+  const signup = (email: string, password: string, name: string): void | string => {
     const usersStorage = JSON.parse(localStorage.getItem("users_bd") || "[]");
 
     const hasUser = usersStorage.find((storedUser: User) => storedUser.email === email);
@@ -52,7 +52,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       return "Já existe uma conta com este e-mail";
     }
 
-    const newUser: User[] = [...usersStorage, { email, password }];
+    const newUser: User[] = [...usersStorage, { email, password, name }];
     localStorage.setItem("users_bd", JSON.stringify(newUser));
 
     return;

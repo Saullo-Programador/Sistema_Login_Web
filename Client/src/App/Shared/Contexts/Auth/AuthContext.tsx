@@ -10,7 +10,7 @@ interface AuthContextType {
   user: User | null;
   signed: boolean;
   signin: (email: string, password: string) => void | string;
-  signup: (email: string, password: string) => void | string;
+  signup: (email: string, password: string, name: string) => void | string;
   signout: () => void;
 }
 

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import UseApi from "../../Shared/Hooks/UseApi";
+import ButtonComponente from "../../Components/Container/ButtonComponente";
+import InputComponente from "../../Components/Container/InputComponente";
+import * as S from '../../Styles/Global/SignupSigninStyles'
 
 const SignupScreens = () => {
   const [name, setName] = useState<string>("");
@@ -12,60 +15,66 @@ const SignupScreens = () => {
 
   const { signup } = UseApi();
 
-  const handleSignup = () => {
-    if (!email || !emailConf || !senha) {
+  const handleSignup = async () => {
+    if (!email || !emailConf || !senha || !name) {
       setError("Preencha todos os campos");
       return;
     } else if (email !== emailConf) {
       setError("Os e-mails não são iguais");
       return;
     }
+    try {
+      const res = signup(email, senha, name);
 
-    const res = signup(email, senha);
-
-    if (res) {
-      setError(res);
-      return;
+      if (res) {
+        setError(res);
+      } else {
+        alert("Usuário cadastrado com sucesso!");
+        navigate("/");
+      }
+    } catch (error) {
+      setError("Erro ao cadastrar usuário");
     }
-
-    alert("Usuário cadastrado com sucesso!");
-    navigate("/");
   };
 
   return (
-    <div>
-      <h2> Pagina de Cadastro</h2>
-        <input
-          type="text"
-          placeholder="Digite seu Name"
-          value={name}
-          onChange={(e) => [setName(e.target.value), setError("")]}
-        />
-        <input
-          type="email"
-          placeholder="Digite seu E-mail"
-          value={email}
-          onChange={(e) => [setEmail(e.target.value), setError("")]}
-        />
-        <input
-          type="email"
-          placeholder="Confirme seu E-mail"
-          value={emailConf}
-          onChange={(e) => [setEmailConf(e.target.value), setError("")]}
-        />
-        <input
-          type="password"
-          placeholder="Digite sua Senha"
-          value={senha}
-          onChange={(e) => [setSenha(e.target.value), setError("")]}
-        />
-        <p>{error}</p>
-        <button onClick={handleSignup}> Inscrever-se </button>
-        <p>Já tem uma conta?</p>
-        <div>
-          <Link to="/">&nbsp;Entre</Link>
-        </div>
-    </div>
+    <S.Container>
+      <S.Content>
+        <S.Title>Cadastro</S.Title>
+          <InputComponente
+            type="text"
+            placeholder="Digite seu Name"
+            value={name}
+            onChange={(e) => [setName(e.target.value), setError("")]}
+          />
+          <InputComponente
+            type="email"
+            placeholder="Digite seu E-mail"
+            value={email}
+            onChange={(e) => [setEmail(e.target.value), setError("")]}
+          />
+          <InputComponente
+            type="email"
+            placeholder="Confirme seu E-mail"
+            value={emailConf}
+            onChange={(e) => [setEmailConf(e.target.value), setError("")]}
+          />
+          <InputComponente
+            type="password"
+            placeholder="Digite sua Senha"
+            value={senha}
+            onChange={(e) => [setSenha(e.target.value), setError("")]}
+          />
+        <S.labelError><p dangerouslySetInnerHTML={{ __html: error }}></p></S.labelError>
+        <ButtonComponente onClick={handleSignup} titulo={"Inscrever-se"}></ButtonComponente>
+        <S.LabelSignup>
+          Já tem uma conta?
+          <S.Strong>
+            <Link to="/">&nbsp;Entre</Link>
+        </S.Strong>
+        </S.LabelSignup>
+      </S.Content>
+    </S.Container>
   );
 };
 
