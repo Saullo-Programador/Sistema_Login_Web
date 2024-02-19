@@ -16,9 +16,9 @@ export const Content = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  box-shadow:  10px 10px 50px #636363, -10px -10px 50px #ffffff;
+  box-shadow: 0px 2px 23px 13px rgba(0,0,0,0.1);
   background-color: white;
-  max-width: 350px;
+  max-width: 320px;
   padding: 20px;
   border-radius: 20px;
 `;
